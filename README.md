@@ -79,9 +79,3 @@ Below is a visual representation of the database structure:
 
 
 ---
-
-## How to Run
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/username/task-app.git
-   cd task-app
