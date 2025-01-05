@@ -39,6 +39,47 @@ Organizes tasks based on their completion status.
 
 <img width="167" alt="image" src="https://github.com/user-attachments/assets/273cdd1b-5d1b-4692-aa37-01f220df25ae" />
 
+---
+
+## Database Design  
+The application uses **PostgreSQL** to manage its data. The database contains two main tables:  
+
+1. **User Table**  
+   Stores information about registered users, including their ID, name, email, and password.  
+
+2. **Task Table**  
+   Stores tasks with fields for description, priority, status, date, and a foreign key (`assigneeId`) linking tasks to users.  
+
+### Database Structure  
+#### User Table  
+| Column     | Type    | Description                 |
+|------------|---------|-----------------------------|
+| `id`       | Int     | Primary key, auto-increment |
+| `name`     | String  | User's name                |
+| `email`    | String  | Unique email address       |
+| `password` | String  | Encrypted password         |
+
+#### Task Table  
+| Column       | Type      | Description                             |
+|--------------|-----------|-----------------------------------------|
+| `id`         | Int       | Primary key, auto-increment            |
+| `description`| String    | Task description                       |
+| `priority`   | String    | Task priority (Low, Medium, High)      |
+| `status`     | String    | Task status (Pending, In Progress, Completed) |
+| `date`       | DateTime  | Task due date                          |
+| `assigneeId` | Int       | Foreign key linking to the user table  |
+
+### Database Schema Diagram  
+Below is a visual representation of the database structure:  
+#### User Table:  
+<img width="593" alt="image" src="https://github.com/user-attachments/assets/d000f873-7d4d-4f7d-8af5-531ee6ea27ee" />
+
+#### Task Table:  
+<img width="523" alt="image" src="https://github.com/user-attachments/assets/489cc99c-cede-4eea-8207-c37f3c81f171" />
+
+
+---
+
 ## How to Run
 1. Clone the repository:  
    ```bash
