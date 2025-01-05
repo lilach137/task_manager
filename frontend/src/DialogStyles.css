@@ -1,0 +1,52 @@
+.task-dialog {
+  max-width: 600px;
+  margin: auto;
+}
+
+.dialog-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: #3f51b5;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 25px;
+}
+
+.input-field,
+.select-field {
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.select-field {
+  background-color: #f9f9f9;
+}
+
+.cancel-button {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.save-button {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+button {
+  margin: 8px;
+}
+
+@media (max-width: 768px) {
+  .dialog-content {
+    padding: 8px;
+  }
+  .dialog-title {
+    font-size: 1.2rem;
+  }
+}

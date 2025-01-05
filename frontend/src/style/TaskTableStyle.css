@@ -1,0 +1,32 @@
+.table-container {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden; /* למנוע יציאה של תוכן */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צלליות עדינות */
+  background-color: #f9f9f9; /* רקע בהיר */
+  max-width: 1000px; /* הגבלת רוחב הטבלה */
+  margin-left: auto;
+  margin-right: auto; /* למרכז את הטבלה */
+}
+
+
+.table-header-cell {
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+  color: #283664;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.menu-item {
+  color: #283664;
+  font-size: 1rem;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.menu-item:hover {
+  background-color: #a8a5a5;
+}
