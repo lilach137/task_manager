@@ -40,6 +40,14 @@ export class TaskService {
   }
   
   async updateTask(id: number, updateData: Partial<Omit<task, "id" | "date">>) {
+    const task = await this.prisma.task.findUnique({
+      where: { id : id},
+    });
+  
+    if (!task) {
+      throw new Error('Task not found');
+    }
+   
     return this.prisma.task.update({
       where: { id },
       data: updateData,
