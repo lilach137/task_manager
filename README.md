@@ -77,5 +77,33 @@ Below is a visual representation of the database structure:
 #### Task Table:  
 <img width="523" alt="image" src="https://github.com/user-attachments/assets/489cc99c-cede-4eea-8207-c37f3c81f171" />
 
+## How to run?
+# Application Setup Guide
+
+This application consists of two main parts:
+- **Frontend** (Node.js 18)
+- **Backend** (Node.js 18 with PostgreSQL 17)
+
+Both parts are containerized using Docker. Follow these steps to set up and run the application:
+
+---
+
+## **Prerequisites**
+
+1. Install **Docker** and **Docker Compose** on your machine:
+   - [Docker Installation Guide](https://docs.docker.com/get-docker/)
+   - [Docker Compose Installation Guide](https://docs.docker.com/compose/install/)
+
+2. Ensure ports **5173** (Frontend), **3000** (Backend), and **5432** (PostgreSQL) are not in use.
+
+---
+
+## **Setup and Run**
+
+### 1. Clone the repository:
+
+```bash
+git clone https://github.com/your-repository-name.git
+cd your-repository-name
 
 ---
