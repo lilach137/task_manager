@@ -51,7 +51,7 @@ const App: React.FC = () => {
       }
     }
 
-  }, [users, userLoadFlag])
+  }, [userLoadFlag])
 
   useEffect(() => {
     const loadAndFilterTasks = async () => {

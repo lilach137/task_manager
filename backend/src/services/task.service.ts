@@ -1,4 +1,4 @@
-import { PrismaClient, Task } from "@prisma/client";
+import { PrismaClient, task } from "@prisma/client";
 
 
 export class TaskService {
@@ -39,7 +39,7 @@ export class TaskService {
     });
   }
   
-  async updateTask(id: number, updateData: Partial<Omit<Task, "id" | "date">>) {
+  async updateTask(id: number, updateData: Partial<Omit<task, "id" | "date">>) {
     return this.prisma.task.update({
       where: { id },
       data: updateData,
