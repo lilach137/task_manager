@@ -103,7 +103,26 @@ Both parts are containerized using Docker. Follow these steps to set up and run 
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-repository-name.git
-cd your-repository-name
+git clone https://github.com/lilach137/task_manager.git
+cd task_manager
 
----
+### 2. Build and start the containers:
+```bash
+docker-compose up --build
+
+### 3. Run the Prisma Migrations:
+```bash
+docker-compose exec backend npx prisma migrate dev
+
+### 4. Access the application:
+Once the containers are up and running, you can access the application through the following URLs:
+
+Frontend: http://localhost:5173
+Backend API: http://localhost:3000
+The frontend will be available in the browser, and the backend API can be used for making requests.
+
+### 5. Stopping the application:
+docker-compose down
+
+
+
