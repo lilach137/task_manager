@@ -1,11 +1,11 @@
 import { Task } from "./types/ITask";
 
-// פונקציה לניהול התחברות/הרשמה
+
 export const authenticateUser = async (payload: { email: string; password: string; name?: string }) => {
   try {
     const url = payload.name
-      ? "http://localhost:3000/users" // הרשמה
-      : "http://localhost:3000/login"; // התחברות
+      ? "http://localhost:3000/users"
+      : "http://localhost:3000/login";
 
     const response = await fetch(url, {
       method: "POST",
