@@ -9,7 +9,7 @@ import {
   Select,
 } from "@mui/material";
 import { Task } from "../types/ITask";
-import "../DialogStyles.css";
+import "../style/DialogStyles.css";
 
 interface TaskDialogProps {
   task: Task;
