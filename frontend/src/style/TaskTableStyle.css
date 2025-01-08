@@ -1,12 +1,12 @@
 .table-container {
   margin-top: 20px;
   border-radius: 8px;
-  overflow: hidden; /* למנוע יציאה של תוכן */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צלליות עדינות */
-  background-color: #f9f9f9; /* רקע בהיר */
-  max-width: 1000px; /* הגבלת רוחב הטבלה */
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9; 
+  max-width: 1000px; 
   margin-left: auto;
-  margin-right: auto; /* למרכז את הטבלה */
+  margin-right: auto;
 }
 
 
