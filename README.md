@@ -107,22 +107,47 @@ git clone https://github.com/lilach137/task_manager.git
 cd task_manager
 ```
 
-### 2. Build and start the containers:
+### 2. Updating and Installing Node.js and npm
+
+The following commands update the package lists on your system and install Node.js and npm (if not already installed):
+ Updates the list of available packages.
 ```bash
-docker-compose up --build
+sudo apt update
 ```
-### 3. Run the Prisma Migrations:
+Installs or updates Node.js and npm to the latest versions.
 ```bash
-docker-compose exec backend npx prisma migrate dev
+sudo apt install -y nodejs npm
 ```
 
-### 4. Access the application:
+### 3. Installing Dependencies for the Backend
+
+Run the following command to navigate to the backend directory and install the necessary dependencies:
+```bash
+cd backend & npm i
+```
+
+### 4. Generating Prisma Client
+
+Run the following command to generate the Prisma Client:
+```bash
+npx prisma generate
+```
+
+### 5. Build and start the containers and Prisma Migrations :
+```bash
+docker-compose up --build & docker-compose exec backend npx prisma migrate dev
+```
+
+### 6. Access the application:
 Once the containers are up and running, you can access the application through the following URLs:
+
 Frontend: http://localhost:5173/login
+
 Backend API: http://localhost:3000
+
 The frontend will be available in the browser, and the backend API can be used for making requests.
 
-### 5. Stopping the application:
+### 6. Stopping the application:
 ```bash
 docker-compose down
 ```
