@@ -1,8 +1,9 @@
 .dialog-title {
   font-size: 1rem;
   font-weight: bold;
+  font-style: italic;
   text-align: center;
-  color: #3f51b5;
+  color: #091878;
 }
 
 .dialog-content {
@@ -10,6 +11,8 @@
   flex-direction: column;
   gap: 16px;
   padding: 25px;
+  width: 400px;
+  height: 400px;
 }
 
 .input-field,
@@ -19,29 +22,8 @@
   font-size: 1rem;
 }
 
-.select-field {
-  background-color: #f9f9f9;
-}
-
-.cancel-button {
-  color: #f44336;
-  font-weight: bold;
-}
-
-.save-button {
-  color: #4caf50;
-  font-weight: bold;
-}
-
 button {
   margin: 8px;
 }
 
-@media (max-width: 768px) {
-  .dialog-content {
-    padding: 8px;
-  }
-  .dialog-title {
-    font-size: 1.2rem;
-  }
-}
+
