@@ -3,8 +3,8 @@ import TaskTable from "./components/TaskTable";
 import TaskDialog from "./components/TaskDialog";
 import { Task } from "./types/ITask";
 import { fetchUsers, addTask, updateTask, deleteTask, getTasksByPriority } from "./API";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./EnterPage";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Login from "./components/LoginPage";
 import "./App.css"
 import "./style/TaskTableStyle.css"
 import TaskSidebar from "./components/TaskSideBar";
@@ -17,10 +17,19 @@ const App: React.FC = () => {
   const [currentTask, setCurrentTask] = useState<Task | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState<string>("All");
-  const [userLoadFlag, setUserLoadFlag] = useState(false);
   const [currentStatusFilter, setCurrentStatusFilter] = useState<string>("All");
+  const location = useLocation();
+  const [isTasksPageActive, setIsTasksPageActive] = useState(false);
 
-   
+  useEffect(() => {
+    if (location.pathname === "/tasks") {
+      setIsTasksPageActive(true);
+      setSelectedPriority("All");
+      setCurrentStatusFilter("All");
+    } else {
+      setIsTasksPageActive(false);
+    }
+  }, [location,isTasksPageActive]);
 
   useEffect(() => {
     const loadUsers = async () => {
@@ -32,26 +41,23 @@ const App: React.FC = () => {
       }
     };
 
-    loadUsers();
-  }, []);
-
+    if (isTasksPageActive) {
+      loadUsers();
+    }
+  }, [isTasksPageActive]);
 
   useEffect(() => {
-    const localStorageUser = sessionStorage.getItem("user")
-    if (users && localStorageUser) {
-      console.log("Getting current user")
-      const storedUser = sessionStorage.getItem("user");
-      if (storedUser) {
-        const storedUserData = JSON.parse(storedUser);
-        const user = users.find((u: { id: any; }) => u.id === storedUserData.id);
-
-        if (user) {
-          setCurrentUser(user);
-        }
+    const localStorageUser = localStorage.getItem("user");
+    if (localStorageUser) {
+      const storedUserData = JSON.parse(localStorageUser);
+      const user = users.find((u) => u.id === storedUserData.id);
+  
+      if (user) {
+        setCurrentUser(user);
       }
     }
-
-  }, [userLoadFlag])
+  }, [users, isTasksPageActive]);
+  
 
   useEffect(() => {
     const loadAndFilterTasks = async () => {
@@ -69,8 +75,10 @@ const App: React.FC = () => {
       }
     };
 
-    loadAndFilterTasks();
-  }, [selectedPriority]);
+    if (isTasksPageActive) {
+      loadAndFilterTasks();
+    }
+  }, [selectedPriority, isTasksPageActive]);
 
   const handleSaveTask = async () => {
     if (!currentTask || !validateForm(currentTask)) {
@@ -81,6 +89,9 @@ const App: React.FC = () => {
     if (currentTask.id) {
       await updateTask(currentTask);
       setTasks((prev) =>
+        prev.map((t) => (t.id === currentTask.id ? currentTask : t))
+      );
+      setFilteredTasks((prev) =>
         prev.map((t) => (t.id === currentTask.id ? currentTask : t))
       );
     } else {
@@ -154,6 +165,8 @@ const App: React.FC = () => {
       console.error("Error filtering tasks:", error);
     }
   };
+
+
   const handleSortByStatus = async () => {
     try {
       const sorted = [...filteredTasks].sort((b, a) => {
@@ -167,12 +180,10 @@ const App: React.FC = () => {
 
 
   return (
-    <Router>
       <div className="app-container">
         <h1 className="table-title" color="primary">Task Management App</h1>
         <Routes>
-          <Route path="/login" element={<Login
-            setUserLoadFlag={setUserLoadFlag} />} />
+          <Route path="/login" element={<Login/>} />
           <Route
             path="/tasks"
             element={
@@ -219,7 +230,6 @@ const App: React.FC = () => {
           />
         </Routes>
       </div>
-    </Router>
   );
 };
 
