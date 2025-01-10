@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Typography, Container, Paper, Box, Snackbar, Alert } from "@mui/material";
-import { authenticateUser } from "./API";
+import { authenticateUser } from "../API";
 
-const Login = ({setUserLoadFlag}: {setUserLoadFlag: (state: boolean) => void}) => {
+const Login = () => {
   const [isRegistering, setIsRegistering] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,10 +28,7 @@ const Login = ({setUserLoadFlag}: {setUserLoadFlag: (state: boolean) => void}) =
       if (authenticate) {
         setSnackbarMessage(isRegistering ? "Registration successful!" : "Login successful!");
         const loggedInUser = {id: authenticate.user.id };
-        sessionStorage.setItem("user", JSON.stringify(loggedInUser));
-
-        
-        setUserLoadFlag(true); 
+        localStorage.setItem("user", JSON.stringify(loggedInUser));
 
         setOpenSnackbar(true);
         setTimeout(() => {

@@ -59,10 +59,22 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, statusCompleted, onEdit, o
             open={Boolean(priorityMenuAnchorEl)}
             onClose={() => setPriorityMenuAnchorEl(null)}
           >
-            <MenuItem onClick={() => onPriorityChange("All")}>All</MenuItem>
-            <MenuItem onClick={() => onPriorityChange("High")}>High</MenuItem>
-            <MenuItem onClick={() => onPriorityChange("Medium")}>Medium</MenuItem>
-            <MenuItem onClick={() => onPriorityChange("Low")}>Low</MenuItem>
+            <MenuItem onClick={() => {
+              onPriorityChange("All");
+              setPriorityMenuAnchorEl(null);}}
+              >All</MenuItem>
+            <MenuItem onClick={() => {
+              onPriorityChange("High");
+              setPriorityMenuAnchorEl(null);}}
+              >High</MenuItem>
+            <MenuItem onClick={() => {
+              onPriorityChange("Medium");
+              setPriorityMenuAnchorEl(null);}}
+              >Medium</MenuItem>
+            <MenuItem onClick={() => {
+              onPriorityChange("Low");
+              setPriorityMenuAnchorEl(null);}}
+              >Low</MenuItem>
           </Menu>
         </TableCell>
         <TableCell className="table-header-cell">Assignee</TableCell>
@@ -92,8 +104,18 @@ const TaskTable: React.FC<TaskTableProps> = ({ tasks, statusCompleted, onEdit, o
               open={Boolean(menuAnchorEl) && menuTaskId === task.id}
               onClose={() => setMenuAnchorEl(null)}
             >
-              <MenuItem className="menu-item" onClick={() => onEdit(task)}>Edit</MenuItem>
-              <MenuItem className="menu-item" onClick={() => onDelete(task.id)}>Delete</MenuItem>
+              <MenuItem 
+              className="menu-item" 
+              onClick={() => {
+                onEdit(task);
+                setMenuAnchorEl(null);}}
+                >Edit</MenuItem>
+              <MenuItem 
+              className="menu-item" 
+              onClick={() => {
+                onDelete(task.id);
+                setMenuAnchorEl(null);}}
+                >Delete</MenuItem>
             </Menu>
           </TableCell>
         </TableRow>
